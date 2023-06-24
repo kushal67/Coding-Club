@@ -23,17 +23,12 @@ const registerUser = async (req, res) => {
                 email: newUser.email,
                 token:createToken(newUser._id),
             })
-
-
         }
     } catch (err) {
         console.error("Error while querying the database:", err);
         res.status(500).send({ error: "Internal Server Error" });
     }
 }
-
-
-
 const loginUser = async (req, res) => {
 
     const { email, password } = req.body;
@@ -41,16 +36,16 @@ const loginUser = async (req, res) => {
         const foundUser = await User.findOne({ email });
         if (foundUser) {
             if (password === foundUser.password) {
-                res.send({ message: "Login Successful", foundUser });
+                res.send({ message: "Login Successful",foundUser, token:createToken(foundUser._id),});
             } else {
-                res.send({ message: "Password didn't match" });
+                res.send({ message: "Password didn't match"});
             }
         } else {
-            res.send({ message: "User not registered" });
+            res.send({ message: "User not registered"});
         }
     } catch (err) {
         console.error("Error while querying the database:", err);
-        res.status(500).send({ error: "Internal Server Error" });
+        res.status(500).send({ error: "Internal Server Error"});
     }
 }
 
