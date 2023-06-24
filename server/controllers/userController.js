@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
         const foundUser = await User.findOne({ email });
         if (foundUser) {
             if (password === foundUser.password) {
-                res.send({ message: "Login Successful", foundUser,token:createToken(foundUser._id) });
+                res.send({ message: "Login Successful", foundUser });
             } else {
                 res.send({ message: "Password didn't match" });
             }
