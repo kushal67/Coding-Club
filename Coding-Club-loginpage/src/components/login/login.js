@@ -78,9 +78,11 @@ const Login = ({setLoginUser}) => {
   const login = async (e) => {
     e.preventDefault();
     try {
+      
       const response = await axios.post("http://localhost:8000/login", userSignIn);
-      alert(response.data.message);
-      setLoginUser(response.data.foundUser);
+      //alert(response.data.name);
+      console.log(response);
+      setLoginUser(response.data);
       navigate('/');
       
     } catch (error) {

@@ -6,9 +6,9 @@ const PASSWORD=process.env.PASSWORD
 
 
 const connection = async() =>{
-    const URL=`mongodb://127.0.0.1:27017/Login`
+    
     try {
-        await mongoose.connect(URL,{useUnifiedTopology:true,
+        await mongoose.connect(process.env.DATABASE_URL,{useUnifiedTopology:true,
             useNewUrlParser:true
         });
         console.log('database connected successfully');
