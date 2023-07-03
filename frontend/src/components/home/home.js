@@ -1,33 +1,30 @@
-import React, { useEffect } from "react";
-import homecss from "./home.module.css";
-import { useNavigate } from "react-router-dom";
-import { ChatState } from "../../context/ChatProvider";
+import React from 'react';
+import { Box, Button, Center, Text } from '@chakra-ui/react';
+import ParticlesBg from 'particles-bg';
+import { Link } from 'react-router-dom';
 
-const Homepage = () => {
-  const {setUser}=ChatState();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
-    if (!userInfo) {
-      // Redirect to the "/chats" page if user info is not available
-      navigate("/login");
-    }
-  }, [navigate]);
-
-  const handleLogin = () => {
-    // Perform logout actions here
-    // localStorage.removeItem("userInfo");
-    setUser({});
-  };
-
+const HomePage = () => {
   return (
-    <div>
+    <Box position="relative" height="100vh">
+      {/* Particle Background */}
+      <ParticlesBg type="cobweb" bg={true} />
 
-      <button onClick={handleLogin}>LOGIN</button>
-    </div>
+      {/* Main Content */}
+      <Center height="100%" flexDirection="column" zIndex="2" position="relative">
+        {/* Title */}
+        <Text fontSize="4xl" fontWeight="bold" mb="4" color="white">
+          Textex: a messaging web app
+        </Text>
+
+        {/* Go to Login Page Button */}
+        <Link to="/login">
+          <Button colorScheme="teal" size="lg">
+            Go to Login Page
+          </Button>
+        </Link>
+      </Center>
+    </Box>
   );
 };
 
-export default Homepage;
+export default HomePage;
