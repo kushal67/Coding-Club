@@ -3,6 +3,9 @@ import styles from "./login.module.css"; // Import the CSS module
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../../context/ChatProvider";
+import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+import ParticlesBg from "particles-bg";
 const Login = () => {
   const { setUser } = ChatState();
 
@@ -72,7 +75,9 @@ const Login = () => {
     if (name && email && password) {
       axios
         .post("http://localhost:8000/register", userSignOut)
-        .then(response=> {localStorage.setItem("userInfo", JSON.stringify(response.data))});
+        .then((response) => {
+          localStorage.setItem("userInfo", JSON.stringify(response.data));
+        });
     } else {
       alert("invalid input");
     }
@@ -94,118 +99,161 @@ const Login = () => {
     }
   };
 
+
+  
+
   return (
-    <div
-      className={`${styles.container} ${
-        isSignUp ? styles["right-panel-active"] : ""
-      }`}
-      id="container"
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      h="100%"
+      w="100%"
     >
+      <ParticlesBg type="fountain"  bg={true} />
       <div
-        className={styles["form-container"] + " " + styles["sign-in-container"]}
+        className={`${styles.container} ${
+          isSignUp ? styles["right-panel-active"] : ""
+        }`}
+        id="container"
       >
-        <form>
-          <h1>Sign in</h1>
-          <div className={styles["social-container"]}>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-google-plus-g"></i>
-            </a>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>or use your account</span>
-          <input
-            type="email"
-            name="email"
-            value={userSignIn.email}
-            placeholder="Email"
-            onChange={handlechange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={userSignIn.password}
-            placeholder="Password"
-            onChange={handlechange}
-          />
-          <a href="#">Forgot your password?</a>
-          <button className={styles.button} onClick={login}>
-            Sign In
-          </button>
-        </form>
-      </div>
-      <div
-        className={styles["form-container"] + " " + styles["sign-up-container"]}
-      >
-        <form method="POST">
-          <h1>Create Account</h1>
-          <div className={styles["social-container"]}>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-google-plus-g"></i>
-            </a>
-            <a href="#" className={styles.social}>
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>or use your email for registration</span>
-          <input
-            type="text"
-            name="name"
-            value={userSignOut.name}
-            placeholder="Name"
-            onChange={handlechange}
-          />
-          <input
-            type="email"
-            name="email"
-            value={userSignOut.email}
-            placeholder="Email"
-            onChange={handlechange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={userSignOut.password}
-            placeholder="Password"
-            onChange={handlechange}
-          />
-          <button style={{ backgroundColor: buttonColor }} onClick={register}>
-            Sign Up
-          </button>
-        </form>
-      </div>
-      <div className={styles["overlay-container"]}>
-        <div className={styles.overlay}>
-          <div
-            className={`${styles["overlay-panel"]} ${styles["overlay-left"]}`}
-          >
-            <h1>Welcome Back to Textex!</h1>
-            <p>
-              To keep connected with us, please login with your personal info
-            </p>
-            <button style={{ backgroundColor: buttonColor }} id="signIn">
+        <div
+          className={
+            styles["form-container"] + " " + styles["sign-in-container"]
+          }
+        >
+          <form>
+            <h1>Sign in</h1>
+            <div className={styles["social-container"]}>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span>or use your account</span>
+            <input
+              type="email"
+              name="email"
+              value={userSignIn.email}
+              placeholder="Email"
+              onChange={handlechange}
+            />
+            <input
+              type="password"
+              name="password"
+              value={userSignIn.password}
+              placeholder="Password"
+              onChange={handlechange}
+            />
+
+            <Button
+              color="white"
+              size="md"
+              onClick={login}
+              bg={buttonColor}
+              m={"4"}
+              _hover={{
+                color: "purple", // Change the text color on hover
+                backgroundColor: "white", // Change the background color on hover
+                // Add other styles here if needed
+              }}
+            >
+              Signin
+            </Button>
+
+            {/* <button className={styles.button} onClick={login}>
               Sign In
-            </button>
-          </div>
-          <div
-            className={`${styles["overlay-panel"]} ${styles["overlay-right"]}`}
-          >
-            <h1>New to Textex?</h1>
-            <p>Enter your personal details and start a journey with us</p>
-            <button className={`${styles.ghost}`} id="signUp">
+            </button> */}
+          </form>
+        </div>
+        <div
+          className={
+            styles["form-container"] + " " + styles["sign-up-container"]
+          }
+        >
+          <form method="POST">
+            <h1>Create Account</h1>
+            <div className={styles["social-container"]}>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" className={styles.social}>
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span>or use your email for registration</span>
+            <input
+              type="text"
+              name="name"
+              value={userSignOut.name}
+              placeholder="Name"
+              onChange={handlechange}
+            />
+            <input
+              type="email"
+              name="email"
+              value={userSignOut.email}
+              placeholder="Email"
+              onChange={handlechange}
+            />
+            <input
+              type="password"
+              name="password"
+              value={userSignOut.password}
+              placeholder="Password"
+              onChange={handlechange}
+            />
+            <Button
+              color="white"
+              size="md"
+              onClick={register}
+              bg={buttonColor}
+              m={"4"}
+              _hover={{
+                color: "red", // Change the text color on hover
+                backgroundColor: "white", // Change the background color on hover
+                // Add other styles here if needed
+              }}
+            >
               Sign Up
-            </button>
+            </Button>
+          </form>
+        </div>
+        <div className={styles["overlay-container"]}>
+          <div className={styles.overlay}>
+            <div
+              className={`${styles["overlay-panel"]} ${styles["overlay-left"]}`}
+            >
+              <h1>Welcome Back to Textex!</h1>
+              <p>
+                To keep connected with us, please login with your personal info
+              </p>
+
+              <Button variant="ghost" color="white" id="signIn" _hover={{}}>
+                Sign In
+              </Button>
+            </div>
+            <div
+              className={`${styles["overlay-panel"]} ${styles["overlay-right"]}`}
+            >
+              <h1>New to Textex?</h1>
+              <p>Enter your personal details and start a journey with us</p>
+              <Button variant="ghost" color="white" id="signUp" _hover={{}}>
+                Sign Up
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 
