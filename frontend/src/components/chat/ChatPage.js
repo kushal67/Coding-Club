@@ -9,7 +9,7 @@ const Chatpage = () => {
     const { user } = ChatState();
   
     return (
-      <div >
+      <Box w="100%" h="100%">
 
         {user && <SideDrawer />}
         <Box display="flex"  justifyContent="space-between" w="100%" h="91.5vh" p="10px">
@@ -19,7 +19,7 @@ const Chatpage = () => {
           )}
 
         </Box>
-      </div>
+      </Box>
     );
   };
   

@@ -3,21 +3,25 @@ import Login from "./components/login/login";
 import Homepage from "./components/home/home";
 // import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-// import { ChatState } from "./context/ChatProvider";
+import { ChatState } from "./context/ChatProvider";
 import Chatpage from "./components/chat/ChatPage";
-
+import { Box } from "@chakra-ui/layout";
+import { Navigate } from "react-router-dom";
 function App() {
-  // const { user } = ChatState();
+   const { user } = ChatState();
 
   return (
-    <div className="app">
+    <Box display="flex" w="100%" h="100%">
       <Routes>
       <Route exact path="/" element={<Homepage />} />
 
-      <Route path="/chats" element={ <Chatpage /> } />
+      <Route
+          path="/chats"
+          element={user ? <Chatpage /> : <Navigate to="/login" />}
+        />
       <Route path="/login" element={<Login />} />
       </Routes>
-    </div>
+    </Box>
   );
 }
 

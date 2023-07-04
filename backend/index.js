@@ -10,6 +10,7 @@ import registerRoute from "./routes/registerRoute.js";
 import loginRoute from "./routes/loginRoute.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import allUserRoute from "./routes/allUserRoute.js"
+import messageRoute from "./routes/messageRoute.js"
 // import { allUsers } from "./controllers/userController.js";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/api/chat", chatRoutes);
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
 app.use("/api/user", allUserRoute);
+app.use("/api/message",messageRoute);
 app.use(notFound);
 app.use(errorHandler);
 
