@@ -44,12 +44,12 @@ const MyChats = ({ fetchAgain }) => {
 
   useEffect(
     () => {
-      console.log("this is useEffect",localStorage.getItem("userInfo"));
+      console.log("this is useEffect", localStorage.getItem("userInfo"));
       setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
       fetchChats();
       // eslint-disable-next-line
     },
-     [fetchAgain]
+    [fetchAgain]
   );
 
   return (
@@ -61,7 +61,7 @@ const MyChats = ({ fetchAgain }) => {
       flexDirection="column"
       alignItems="center"
       p={3}
-      bg="white"
+      className="Mychat"
       w={{ base: "100%", md: "31%" }}
       borderRadius="lg"
       borderWidth="1px"
@@ -76,22 +76,24 @@ const MyChats = ({ fetchAgain }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        My Chats
+        
         <GroupChatModal>
-        <Button
-          display="flex"
-          fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
+          <Button
+            display="flex"
+            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            rightIcon={<AddIcon />}
+            variant="ghost"
+            color='white'
+          >
+            New Group Chat
+          </Button>
         </GroupChatModal>
       </Box>
       <Box
         display="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
+        bg="#E6E6FA"
         w="100%"
         h="100%"
         borderRadius="lg"
@@ -109,14 +111,15 @@ const MyChats = ({ fetchAgain }) => {
                 <Box
                   onClick={() => setSelectedChat(chat)}
                   cursor="pointer"
-                  bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
+                  bg={selectedChat === chat ? "#7953A9" : "#FFFFFF"}
+                  fontSize='xl'
                   color={selectedChat === chat ? "white" : "black"}
                   px={3}
-                  py={2}
+                  py={5}
                   borderRadius="lg"
                   key={chat._id}
                 >
-                  <Text> {chatNameOrSender}</Text>
+                  <Text fontSize='xl' as='samp'> {chatNameOrSender}</Text>
                   {/* {chat.latestMessage && <Text>{chat.latestMessage}</Text>} */}
                 </Box>
               );

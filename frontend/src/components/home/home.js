@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Button, Center, Text } from '@chakra-ui/react';
 import ParticlesBg from 'particles-bg';
 import { Link } from 'react-router-dom';
-
 const HomePage = () => {
   return (
     <Box position="relative" w="100%" h="100%" >
@@ -18,7 +17,7 @@ const HomePage = () => {
 
         {/* Go to Login Page Button */}
         <Link to="/login">
-          <Button colorScheme="ghost" size="lg" color={"black"}>
+          <Button colorScheme="red" size="lg" color={"white"}>
             Go to Login Page
           </Button>
         </Link>

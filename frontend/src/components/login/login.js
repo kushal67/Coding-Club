@@ -100,7 +100,7 @@ const Login = () => {
   };
 
 
-  
+
 
   return (
     <Box
@@ -110,11 +110,10 @@ const Login = () => {
       h="100%"
       w="100%"
     >
-      <ParticlesBg type="fountain"  bg={true} />
+      <ParticlesBg type="fountain" bg={true} />
       <div
-        className={`${styles.container} ${
-          isSignUp ? styles["right-panel-active"] : ""
-        }`}
+        className={`${styles.container} ${isSignUp ? styles["right-panel-active"] : ""
+          }`}
         id="container"
       >
         <div

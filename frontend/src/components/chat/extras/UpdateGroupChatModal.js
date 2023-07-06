@@ -1,4 +1,4 @@
-import { ViewIcon } from "@chakra-ui/icons";
+import { ViewIcon, DragHandleIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -101,7 +101,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
-   const handleAddUser = async (user1) => {
+  const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
       toast({
         title: "User Already in group!",
@@ -157,7 +157,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
-   const handleRemove = async (user1) => {
+  const handleRemove = async (user1) => {
     if (selectedChat.groupAdmin._id !== user._id && user1._id !== user._id) {
       // console.log(selectedChat.groupAdmin)
       toast({
@@ -188,7 +188,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
       user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
       setFetchAgain(!fetchAgain);
-       fetchMessages();
+      fetchMessages();
       setLoading(false);
     } catch (error) {
       toast({
@@ -206,7 +206,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   return (
     <>
-      <IconButton display={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      <IconButton display={{ base: "flex" }} icon={<DragHandleIcon />} onClick={onOpen} />
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
@@ -243,6 +243,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 variant="solid"
                 colorScheme="teal"
                 ml={1}
+                mt={2}
                 isLoading={renameloading}
                 onClick={handleRename}
               >
@@ -269,11 +270,11 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
               ))
             )}
           </ModalBody>
-          <ModalFooter>
+          <box display='flex' align='right'>
             <Button onClick={() => handleRemove(user)} colorScheme="red">
               Leave Group
             </Button>
-          </ModalFooter>
+          </box>
         </ModalContent>
       </Modal>
     </>

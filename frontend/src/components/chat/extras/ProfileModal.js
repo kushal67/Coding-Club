@@ -1,4 +1,4 @@
-import { ViewIcon } from "@chakra-ui/icons";
+import { ViewIcon, DragHandleIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -12,6 +12,7 @@ import {
   IconButton,
   Text,
   Image,
+  Avatar,
 } from "@chakra-ui/react";
 
 const ProfileModal = ({ user, children }) => {
@@ -24,11 +25,9 @@ const ProfileModal = ({ user, children }) => {
       ) : (
         <IconButton
           display={{ base: "flex" }}
-          icon={<ViewIcon />}
+          icon={<DragHandleIcon />}
           onClick={onOpen}
-          position="absolute"
-          right="6"
-          
+
         />
       )}
       <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
@@ -52,6 +51,9 @@ const ProfileModal = ({ user, children }) => {
               alignItems="center"
               justifyContent="space-between"
             >
+              <Avatar  size="2xl" cursor="pointer" name={user.name} />
+
+              
               {/* <Image
                 borderRadius="full"
                 boxSize="150px"
@@ -64,9 +66,9 @@ const ProfileModal = ({ user, children }) => {
               >
                 Email: {user.email}
               </Text>
-              
-                <Button onClick={onClose}>Close</Button>
-              
+
+              <Button onClick={onClose}>Close</Button>
+
             </ModalBody>
           </div>
         </ModalContent>
